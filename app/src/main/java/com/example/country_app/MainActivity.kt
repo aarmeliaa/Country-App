@@ -73,6 +73,12 @@ class MainActivity : AppCompatActivity() {
                 // Gunakan selectedDate sesuai kebutuhan Anda
             }
 
+            timePicker.setOnTimeChangedListener { view, hourOfDay, minute ->
+                val selectedTime = String.format("%02d:%02d", hourOfDay, minute)
+                Toast.makeText(this@MainActivity, selectedTime, Toast.LENGTH_SHORT).show()
+                // Gunakan selectedTime sesuai kebutuhan Anda
+            }
+
         }
     }
 }
