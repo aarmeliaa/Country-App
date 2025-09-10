@@ -1,5 +1,6 @@
 package com.example.country_app
 
+import android.app.DatePickerDialog
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
@@ -11,7 +12,7 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.example.country_app.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), DatePickerDialog.OnDateSetListener {
     private lateinit var binding: ActivityMainBinding
     private lateinit var provinces: Array<String>
     private val countries = arrayOf(
@@ -79,6 +80,19 @@ class MainActivity : AppCompatActivity() {
                 // Gunakan selectedTime sesuai kebutuhan Anda
             }
 
+            btnShowCalendar.setOnClickListener {
+                val datePicker = DatePicker()
+                datePicker.show(supportFragmentManager, "datePicker")
+            }
+
         }
+    }
+
+    override fun onDateSet(p0: android.widget.DatePicker?, p1: Int, p2: Int, p3:
+    Int) {
+        // Gunakan p1, p2, p3 untuk mendapatkan tanggal, bulan, dan tahun
+        val selectedDate = "$p3/${p2 + 1}/$p1"
+        Toast.makeText(this@MainActivity, selectedDate,
+            Toast.LENGTH_SHORT).show()
     }
 }
