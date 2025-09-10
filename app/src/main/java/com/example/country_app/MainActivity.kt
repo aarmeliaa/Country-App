@@ -63,6 +63,16 @@ class MainActivity : AppCompatActivity() {
             adapterProvinces.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             spinnerProvinces.adapter = adapterProvinces
 
+            datePicker.init(
+                datePicker.year,
+                datePicker.month,
+                datePicker.dayOfMonth
+            ) { _, year, monthOfYear, dayOfMonth ->
+                val selectedDate = "$dayOfMonth/${monthOfYear + 1}/$year"
+                Toast.makeText(this@MainActivity, selectedDate, Toast.LENGTH_SHORT).show()
+                // Gunakan selectedDate sesuai kebutuhan Anda
+            }
+
         }
     }
 }
